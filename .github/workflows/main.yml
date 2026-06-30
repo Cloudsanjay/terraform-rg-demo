@@ -1,11 +1,24 @@
 name: pahli github pipeline for infra
 
 on: workflow_dispatch
+
+permissions:
+id-token: write
+contents: read
   
 jobs:
   job1: build
   name: terraform install
   runs-on: ubuntu-latest
   steps:
-   - name: terraform install
-     uses: actions/
+   - name: azure login
+     uses: Azure/login@v3
+     with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+    - name: Azure CLI Action
+      uses: Azure/cli@v3
+      with:
+        inlineScript: az account show
+    
