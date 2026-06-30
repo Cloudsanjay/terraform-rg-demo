@@ -1,0 +1,11 @@
+name: pahli github pipeline for infra
+
+on: workflow_dispatch
+  
+jobs:
+  job1: build
+  name: terraform install
+  runs-on: ubuntu-latest
+  steps:
+   - name: terraform install
+     uses: actions/
