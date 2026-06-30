@@ -7,7 +7,7 @@ permissions:
   contents: read
   
 jobs:
-  job1: build
+  job1:
     name: terraform install
     runs-on: ubuntu-latest
     steps:
